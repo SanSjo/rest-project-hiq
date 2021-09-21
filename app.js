@@ -37,7 +37,7 @@ app.post("/greeting", (req, res) => {
         if(err){
             res.send(err);
         } else {
-            res.send("Greeting added")
+            res.status(201).send("Greeting added")
         }
     });
     
