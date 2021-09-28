@@ -1,4 +1,4 @@
-# REST Project in HiQ
+# Simple REST Project
 
 The project is a RESTful web service in Node.js that includes routes GET and POST to write and print greetings. Including tests in jest.
 
