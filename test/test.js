@@ -37,14 +37,28 @@ const app = require('../app');
 
 it("should get an array of greetings", async () => {
     request(app).get('/greetings')
-    .expect(200);
+    .expect(200)
+})
+
+it("should get a greeting", async () => {
+    request(app).get('/greetings')
+    .expect(200)
+
 })
 
 it("should add greeting content", async () => {
-    await request(app).post('/greeting')
+    await request(app).post('/greetings')
     .send({
         content: "Hello World"
     })
     .expect(201);
 })
+
+// it("should edit a greeting content", async () => {
+//     await request(app).put('/greeting')
+//     .send({
+//         content: "Hello World put"
+//     })
+//     .expect(201);
+// })
 
