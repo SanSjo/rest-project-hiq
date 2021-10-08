@@ -1,3 +1,42 @@
+const request = require('supertest');
+const greeting = require('../Models/greeting');
+const greetingController = require("../Controller/greeting.controller");
+
+
+
+
+it("should return a greeting", async () => {
+    const myGreeting = "abc"
+    //expect(greetingController.getGreeting()).equal(myGreeting)
+    console.log(greetingController.getGreeting())
+})
+
+it("should return all greetings", async () => {
+    request(greeting).get('/greetings')
+    .expect(200)
+    //.expect(getGreeting.getGreeting(content)).
+})
+
+//TO DO
+it("should add a greeting", async () => {
+    request(greeting).post('/greetings')
+    .send({
+        content: "Hello Tariq",
+    })
+    .expect(201);
+})
+
+// it("should edit a greeting content", async () => {
+//     await request(app).put('/greeting')
+//     .send({
+//         content: "Hello World put"
+//     })
+//     .expect(201);
+// })
+
+
+
+
 // const chai = require('chai');
 // const chaiHttp = require('chai-http')
 // const assert = require('assert');
@@ -29,36 +68,5 @@
 //     });
 
 
-// })
-
-
-const request = require('supertest');
-const app = require('../app');
-
-it("should get an array of greetings", async () => {
-    request(app).get('/greetings')
-    .expect(200)
-})
-
-it("should get a greeting", async () => {
-    request(app).get('/greetings')
-    .expect(200)
-
-})
-
-it("should add greeting content", async () => {
-    await request(app).post('/greetings')
-    .send({
-        content: "Hello World"
-    })
-    .expect(201);
-})
-
-// it("should edit a greeting content", async () => {
-//     await request(app).put('/greeting')
-//     .send({
-//         content: "Hello World put"
-//     })
-//     .expect(201);
 // })
 
