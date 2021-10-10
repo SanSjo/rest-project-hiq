@@ -3,18 +3,16 @@ const greeting = require('../Models/greeting');
 const greetingController = require("../Controller/greeting.controller");
 
 
-
-
 it("should return a greeting", async () => {
-    const myGreeting = "abc"
-    //expect(greetingController.getGreeting()).equal(myGreeting)
-    console.log(greetingController.getGreeting())
+   request(greeting).get('/greetings')
+   .expect(200)
+
 })
 
 it("should return all greetings", async () => {
     request(greeting).get('/greetings')
     .expect(200)
-    //.expect(getGreeting.getGreeting(content)).
+    //.expect(getAllGreetings.getGreeting(content)).
 })
 
 //TO DO
