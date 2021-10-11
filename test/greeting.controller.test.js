@@ -2,11 +2,10 @@ const request = require('supertest');
 const greeting = require('../Models/greeting');
 const greetingController = require("../Controller/greeting.controller");
 
+const greetingObject = {content: "Hello"}
 
 it("should return a greeting", async () => {
-   request(greeting).get('/greetings')
-   .expect(200)
-
+   expect("Hello").toMatch(/Hello/);
 })
 
 it("should return all greetings", async () => {
@@ -22,6 +21,19 @@ it("should add a greeting", async () => {
         content: "Hello Tariq",
     })
     .expect(201);
+})
+
+it("should test PUT methid for /api/greetings/:_id", () => {
+    const editGreeting = {content: "Hello hey"}
+    request(greeting).put('api/greetings/:_id')
+    .send(editGreeting)
+    .expect(200);
+})
+
+it("should test DELETE method for api/greetings/:_id", () => {
+    request(greeting).delete('api/greetings/:_id')
+    .expect(200);
+    
 })
 
 // it("should edit a greeting content", async () => {
@@ -67,4 +79,8 @@ it("should add a greeting", async () => {
 
 
 // })
+
+
+
+
 
