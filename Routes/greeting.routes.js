@@ -6,5 +6,6 @@ router.get('/greetings', greetingController.getAllGreetings);
 router.get('/greetings/:_id', greetingController.getGreeting);
 router.post('/greetings', greetingController.postGreeting);
 router.put('/greetings/:_id', greetingController.modifyGreeting);
+router.delete('/greetings/:_id', greetingController.deleteGreeting);
 
 module.exports = router;

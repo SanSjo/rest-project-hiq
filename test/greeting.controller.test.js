@@ -2,6 +2,7 @@ const request = require('supertest');
 const greeting = require('../Models/greeting');
 const greetingController = require("../Controller/greeting.controller");
 
+
 const greetingObject = {content: "Hello"}
 
 it("should return a greeting", async () => {
@@ -31,8 +32,15 @@ it("should test PUT methid for /api/greetings/:_id", () => {
 })
 
 it("should test DELETE method for api/greetings/:_id", () => {
-    request(greeting).delete('api/greetings/:_id')
-    .expect(200);
+    const deleteGreeting = greeting.findByIdAndDelete();
+    if(!deleteGreeting) {
+        return;
+    }
+    const response = request(greeting).delete('api/greetings/:_id');
+    expect(200);
+    expect(typeof response.body).toBe('object');
+    expect(response.body.content).toBe('Greeting successfully deleted');
+
     
 })
 

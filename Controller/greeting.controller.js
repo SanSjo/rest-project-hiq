@@ -6,7 +6,7 @@ const getAllGreetings = (req, res) => {
             res.status(200).json(foundGreetings)
             console.log(foundGreetings)
         } else {
-            res.send(err)
+            res.status(404).send(err)
         }
     })
 }
@@ -14,9 +14,9 @@ const getAllGreetings = (req, res) => {
 const getGreeting = (req,res) => {
     Greeting.findById({_id: req.params._id}, (err, foundGreeting) => {
         if(err) {
-            res.send(err)
+            res.status(404).send(err)
         } else {
-            res.json(foundGreeting)
+            res.status(200).json(foundGreeting)
         }
     })
     // Greeting.findById(req.params._id)
@@ -28,12 +28,11 @@ const getGreeting = (req,res) => {
 
 const postGreeting = (req, res) => {
     const createGreeting = new Greeting({
-        id: req.body.id,
         content: req.body.content
     })
     createGreeting.save((err) => {
         if (err) {
-            res.send(err);
+            res.status(404).send(err);
         } else {
             res.status(201).send("Greeting added")
         }
@@ -43,13 +42,24 @@ const postGreeting = (req, res) => {
 const modifyGreeting = (req, res) => {
     Greeting.updateOne({_id: req.params._id, content: req.body.content}, (err, greeting) => {
         if(err) {
-            res.send(err)
+            res.status(404).send(err)
         } else {
-            res.json(greeting)
+            res.status(200).json(greeting)
         }
+    })
+}
+
+const deleteGreeting = (req, res) => {
+    Greeting.findByIdAndDelete({_id: req.params._id}, (err) => {
+        if(err) {
+            res.send(err);
+        } else {
+            res.send("Greering successfully deleted");
+        }
+
     })
 }
 
 
 
-module.exports = { getAllGreetings, getGreeting, postGreeting, modifyGreeting };
+module.exports = { getAllGreetings, getGreeting, postGreeting, modifyGreeting, deleteGreeting};
