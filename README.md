@@ -16,7 +16,11 @@ You need to install MongoDB on your computer before you can connect to it. You c
 Mac: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
 Windows: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
 
-Clone this project on your computer
+Clone this project on your computer:
+
+```bash
+git clone https://github.com/SanSjo/rest-project-hiq.git
+```
 
 Install dependencies with:
 
